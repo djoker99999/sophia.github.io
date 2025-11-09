@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -2194,6 +2193,15 @@
       }, 7000);
     }
 
+    // CORRECTION : Calculer le gain partiel pour 4 ou 5 symboles
+    function calculatePartialGain(symbolCount) {
+      switch(symbolCount) {
+        case 4: return 5; // 5 roses pour 4 symboles (modifié)
+        case 5: return 25; // 25 roses pour 5 symboles (modifié)
+        default: return 0;
+      }
+    }
+
     // Tourner tous les symboles
     async function spinAllSymbols() {
       if (isSpinning) return;
@@ -2311,15 +2319,6 @@
       
       isSpinning = false;
       spinBtn.disabled = false;
-    }
-
-    // CORRECTION : Calculer le gain partiel pour 4 ou 5 symboles
-    function calculatePartialGain(symbolCount) {
-      switch(symbolCount) {
-        case 4: return 10; // 10 roses pour 4 symboles
-        case 5: return 50; // 50 roses pour 5 symboles
-        default: return 0;
-      }
     }
 
     // Gestion de la victoire
