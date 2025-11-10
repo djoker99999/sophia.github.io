@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1225,9 +1224,9 @@
           <img src="https://i.ibb.co/nNy17WfL/IMG-6065.png" alt="Mini Gun - 1000 tours" class="attack-mode-image">
           <div>1,000 tours</div>
         </button>
-        <button id="mode3000" class="attack-mode-btn">
-          <img src="https://i.ibb.co/JMPfpWV/IMG-5851.png" alt="Galaxie - 3000 tours" class="attack-mode-image">
-          <div>3,000 tours</div>
+        <button id="mode2000" class="attack-mode-btn">
+          <img src="https://i.ibb.co/JMPfpWV/IMG-5851.png" alt="Galaxie - 2000 tours" class="attack-mode-image">
+          <div>2,000 tours</div>
         </button>
         <button id="mode5000" class="attack-mode-btn">
           <img src="https://i.ibb.co/0pM1D3wm/IMG-7123.png" alt="Ultime - 5000 tours" class="attack-mode-image">
@@ -2194,15 +2193,6 @@
       }, 7000);
     }
 
-    // CORRECTION : Calculer le gain partiel pour 4 ou 5 symboles
-    function calculatePartialGain(symbolCount) {
-      switch(symbolCount) {
-        case 4: return 5; // 5 roses pour 4 symboles (modifié)
-        case 5: return 25; // 25 roses pour 5 symboles (modifié)
-        default: return 0;
-      }
-    }
-
     // Tourner tous les symboles
     async function spinAllSymbols() {
       if (isSpinning) return;
@@ -2322,6 +2312,15 @@
       spinBtn.disabled = false;
     }
 
+    // CORRECTION : Calculer le gain partiel pour 4 ou 5 symboles
+    function calculatePartialGain(symbolCount) {
+      switch(symbolCount) {
+        case 4: return 10; // 10 roses pour 4 symboles
+        case 5: return 50; // 50 roses pour 5 symboles
+        default: return 0;
+      }
+    }
+
     // Gestion de la victoire
     async function winGame() {
       winAnimationActive = true;
@@ -2403,7 +2402,7 @@
     document.getElementById("mode30").addEventListener("click", () => setAttackMode(30));
     document.getElementById("mode100").addEventListener("click", () => setAttackMode(100));
     document.getElementById("mode1000").addEventListener("click", () => setAttackMode(1000));
-    document.getElementById("mode3000").addEventListener("click", () => setAttackMode(3000));
+    document.getElementById("mode2000").addEventListener("click", () => setAttackMode(2000));
     document.getElementById("mode5000").addEventListener("click", () => setAttackMode(5000));
 
     // Raccourcis clavier
@@ -2424,7 +2423,7 @@
       }
       
       if (e.key >= '1' && e.key <= '7') {
-        const modes = [1, 10, 30, 100, 1000, 3000, 5000];
+        const modes = [1, 10, 30, 100, 1000, 2000, 5000];
         const index = parseInt(e.key) - 1;
         if (index < modes.length) {
           setAttackMode(modes[index]);
